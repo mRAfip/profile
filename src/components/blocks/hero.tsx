@@ -1,4 +1,7 @@
+"use client";
+
   import Image from "next/image";
+  import { useState, useEffect, useCallback } from "react";
 
   import {
     ArrowRight,
@@ -6,10 +9,19 @@
     ChartNoAxesColumn,
     CircleDot,
     Diamond,
+    Play,
+    Pause,
   } from "lucide-react";
 
   import { DashedLine } from "@/components/dashed-line";
   import { Button } from "@/components/ui/button";
+  import {
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselNext,
+    CarouselPrevious,
+  } from "@/components/ui/carousel";
 
   const features = [
     {
@@ -34,7 +46,63 @@
     },
   ];
 
+  const heroImages = [
+    {
+      src: "/4.webp",
+      alt: "Hero Image 1",
+    },
+    {
+      src: "/3.webp",
+      alt: "Hero Image 2",
+    },
+    {
+      src: "/2.webp",
+      alt: "Hero Image 3",
+    },
+    {
+      src: "/1.webp",
+      alt: "Hero Image 4",
+    },
+  ];
+
   export const Hero = () => {
+    const [api, setApi] = useState<any>(null);
+    const [current, setCurrent] = useState(0);
+    const [isPlaying, setIsPlaying] = useState(true);
+
+    useEffect(() => {
+      if (!api) {
+        return;
+      }
+
+      setCurrent(api.selectedScrollSnap());
+
+      api.on("select", () => {
+        setCurrent(api.selectedScrollSnap());
+      });
+    }, [api]);
+
+    // Auto-sliding functionality
+    useEffect(() => {
+      if (!api || !isPlaying) {
+        return;
+      }
+
+      const interval = setInterval(() => {
+        api.scrollNext();
+      }, 4000); // Auto-slide every 4 seconds
+
+      return () => clearInterval(interval);
+    }, [api, isPlaying]);
+
+    const togglePlayPause = useCallback(() => {
+      setIsPlaying(!isPlaying);
+    }, [isPlaying]);
+
+    const goToSlide = useCallback((index: number) => {
+      api?.scrollTo(index);
+    }, [api]);
+
     return (
       <section className="py-28 lg:py-32 lg:pt-44">
         <div className="container">
@@ -73,14 +141,60 @@
           </div>
         </div>
 
-        <div className="mt-12 max-lg:ml-6 max-lg:h-[550px] max-lg:overflow-hidden md:mt-20 lg:container lg:mt-24">
-          <div className="relative h-[793px] w-full">
-            <Image
-              src="/hero.webp"
-              alt="hero"
-              fill
-              className="rounded-2xl object-cover object-left-top shadow-lg max-lg:rounded-tr-none"
-            />
+        <div className="mt-12 max-lg:ml-6 max-lg:h-[400px] max-lg:overflow-hidden md:mt-20 lg:container lg:mt-24">
+          <Carousel 
+            className="w-full" 
+            setApi={setApi}
+            opts={{
+              align: "center",
+            }}
+          >
+            <CarouselContent>
+              {heroImages.map((image, index) => (
+                <CarouselItem key={index}>
+                  <div className="relative h-[593px] w-full">
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      fill
+                      className="rounded-4xl object-cover object-left-top shadow-lg max-lg:rounded-tr-none"
+                    />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
+          
+          {/* Carousel Controls */}
+          <div className="flex items-center justify-center gap-4 mt-6">
+            {/* Control Dots */}
+            <div className="flex items-center gap-2 bg-gray-800 rounded-full px-4 py-3 h-10">
+              {heroImages.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  className={`rounded-full transition-all duration-300 ${
+                    current === index
+                      ? "bg-white w-8 h-2"
+                      : "bg-gray-500 hover:bg-gray-400 w-2 h-2"
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
+            
+            {/* Play/Pause Button */}
+            <button
+              onClick={togglePlayPause}
+              className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors duration-200"
+              aria-label={isPlaying ? "Pause slideshow" : "Play slideshow"}
+            >
+              {isPlaying ? (
+                <Pause className="w-4 h-4 text-white" />
+              ) : (
+                <Play className="w-4 h-4 text-white ml-0.5" />
+              )}
+            </button>
           </div>
         </div>
       </section>
