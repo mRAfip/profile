@@ -14,26 +14,26 @@ export function Footer() {
   ];
 
   const social = [
-    { name: "Xwitter", href: "https://x.com/ausrobdev" },
-    { name: "LinkedIn", href: "#" },
+    { name: "Twitter", href: "https://twitter.com/yourusername" },
+    { name: "LinkedIn", href: "https://linkedin.com/in/yourusername" },
+    { name: "GitHub", href: "https://github.com/yourusername" },
   ];
 
   const legal = [{ name: "Privacy Policy", href: "/privacy" }];
 
   return (
-    <footer className="flex flex-col items-center gap-14 pt-28 lg:pt-32">
-      <div className="container space-y-3 text-center">
-        <h2 className="text-2xl tracking-tight md:text-4xl lg:text-5xl">
-          Start your free trial today
+    <footer className="flex flex-col items-center gap-8 sm:gap-10 md:gap-12 lg:gap-14 pt-12 sm:pt-16 md:pt-20 lg:pt-28 xl:pt-32">
+      <div className="container px-4 sm:px-6 md:px-8 lg:px-6 xl:px-4 space-y-3 sm:space-y-4 text-center">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-tight">
+          Let's work together
         </h2>
-        <p className="text-muted-foreground mx-auto max-w-xl leading-snug text-balance">
-          Mainline is the fit-for-purpose tool for planning and building modern
-          software products.
+        <p className="text-muted-foreground mx-auto max-w-xl text-sm sm:text-base leading-snug text-balance">
+          Ready to bring your ideas to life? Let's discuss your next project and create something amazing together.
         </p>
         <div>
           <Button size="lg" className="mt-4" asChild>
-            <a href="https://github.com/shadcnblocks/mainline-nextjs-template">
-              Get template
+            <a href="/contact">
+              Get in touch
             </a>
           </Button>
         </div>

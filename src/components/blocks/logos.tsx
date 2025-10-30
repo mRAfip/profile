@@ -84,10 +84,10 @@ export const Logos = () => {
   ];
 
   return (
-    <section className="pb-28 lg:pb-32">
-      <div className="container space-y-10 lg:space-y-16">
+    <section className="pb-20 sm:pb-24 md:pb-28 lg:pb-32">
+      <div className="container px-4 sm:px-6 md:px-8 lg:px-6 xl:px-4 space-y-8 sm:space-y-10 md:space-y-12 lg:space-y-16">
         <div className="text-center">
-          <h2 className="mb-4 text-xl text-balance md:text-2xl lg:text-3xl">
+          <h2 className="mb-3 sm:mb-4 text-lg sm:text-xl md:text-2xl lg:text-3xl text-balance">
             Powering the world's best product teams.
             <br className="max-md:hidden" />
             <span className="text-black/50">

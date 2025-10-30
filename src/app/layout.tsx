@@ -63,29 +63,24 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Mainline - Modern Next.js Template",
-    template: "%s | Mainline",
+    default: "Personal Profile - Portfolio Website",
+    template: "%s | Personal Profile",
   },
   description:
-    "A modern Next.js template built with shadcn/ui, Tailwind & MDX. Open source - MIT License.",
+    "A modern personal portfolio website built with Next.js, Tailwind CSS, and shadcn/ui components.",
   keywords: [
+    "portfolio",
+    "personal website",
     "Next.js",
-    "nextjs template",
-    "nextjs theme",
-    "nextjs starter",
-    "shadcn template",
-    "shadcn theme",
-    "shadcn starter",
-    "tailwind template",
-    "tailwind theme",
-    "tailwind starter",
-    "mdx template",
-    "mdx theme",
-    "mdx starter",
+    "React",
+    "Tailwind CSS",
+    "shadcn/ui",
+    "developer portfolio",
+    "web developer",
   ],
-  authors: [{ name: "shadcnblocks.com" }],
-  creator: "shadcnblocks.com",
-  publisher: "shadcnblocks.com",
+  authors: [{ name: "Your Name" }],
+  creator: "Your Name",
+  publisher: "Your Name",
   robots: {
     index: true,
     follow: true,
@@ -102,26 +97,26 @@ export const metadata: Metadata = {
     shortcut: [{ url: "/favicon/favicon.ico" }],
   },
   openGraph: {
-    title: "Mainline - Modern Next.js Template",
+    title: "Personal Profile - Portfolio Website",
     description:
-      "A modern Next.js template built with shadcn/ui, Tailwind & MDX. Open source - MIT License.",
-    siteName: "Mainline",
+      "A modern personal portfolio website built with Next.js, Tailwind CSS, and shadcn/ui components.",
+    siteName: "Personal Profile",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Mainline - Modern Next.js Template",
+        alt: "Personal Profile - Portfolio Website",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mainline - Modern Next.js Template",
+    title: "Personal Profile - Portfolio Website",
     description:
-      "A modern Next.js template built with shadcn/ui, Tailwind & MDX. Open source - MIT License.",
+      "A modern personal portfolio website built with Next.js, Tailwind CSS, and shadcn/ui components.",
     images: ["/og-image.jpg"],
-    creator: "@ausrobdev",
+    creator: "@yourusername",
   },
 };
 
@@ -132,13 +127,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <script
-          async
-          crossOrigin="anonymous"
-          src="https://tweakcn.com/live-preview.min.js"
-        />
-      </head>
       <body className={`${dmSans.variable} ${inter.variable} antialiased`}>
         <ThemeProvider
           attribute="class"

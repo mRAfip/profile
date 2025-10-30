@@ -1,12 +1,12 @@
   "use client";
 
-  import { useState } from "react";
+  import { useState, useEffect } from "react";
 
   import Image from "next/image";
   import Link from "next/link";
   import { usePathname } from "next/navigation";
 
-  import { ChevronRight, Github, ArrowRight } from "lucide-react";
+  import { Menu, X } from "lucide-react";
 
   import {
     NavigationMenu,
@@ -46,10 +46,30 @@
     { label: "Contact", href: "/contact" },
   ];
 
+  const MAIN_NAV_ITEMS = [
+    { label: "Home", href: "/" },
+    { label: "Services", href: "#services" },
+    { label: "Projects", href: "/portfolio" },
+    { label: "Process", href: "#process" },
+    { label: "About", href: "/about" },
+  ];
+
+
   export const Navbar = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+    const [isFullPageMenuOpen, setIsFullPageMenuOpen] = useState(false);
     const pathname = usePathname();
+
+    // Prevent body scroll when full-page menu is open
+    useEffect(() => {
+      if (isFullPageMenuOpen) {
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "";
+      }
+      return () => {
+        document.body.style.overflow = "";
+      };
+    }, [isFullPageMenuOpen]);
 
     return (
       <section
@@ -58,10 +78,10 @@
           "top-0",
         )}
       >
-        <div className="container mx-auto flex items-center justify-between px-6 py-4">
-          <Link href="/" className="flex shrink-0 items-center gap-3">
+        <div className="container mx-auto flex items-center justify-between px-4 sm:px-6 md:px-8 lg:px-6 xl:px-4 py-3 sm:py-4">
+          <Link href="/" className="flex shrink-0 items-center gap-2 sm:gap-3">
             {/* Logo Image */}
-            <div className="w-8 h-8 rounded-full overflow-hidden">
+            <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 rounded-full overflow-hidden">
               <Image
                 src="/rafi.jpg"
                 alt="logo"
@@ -82,7 +102,7 @@
               {ITEMS.map((link) =>
                 link.dropdownItems ? (
                   <NavigationMenuItem key={link.label} className="">
-                    <NavigationMenuTrigger className="data-[state=open]:bg-accent/50 bg-transparent! px-1.5 text-gray-800">
+                    <NavigationMenuTrigger className="data-[state=open]:bg-accent/50 bg-transparent! px-1.5 text-xs sm:text-sm font-medium text-gray-800">
                       {link.label}
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
@@ -114,7 +134,7 @@
                     <Link
                       href={link.href}
                       className={cn(
-                        "relative bg-transparent px-1.5 text-sm font-medium text-gray-800 transition-opacity hover:opacity-75",
+                        "relative bg-transparent px-1.5 text-xs sm:text-sm font-medium text-gray-800 transition-opacity hover:opacity-75",
                         pathname === link.href && "text-gray-600",
                       )}
                     >
@@ -127,124 +147,118 @@
           </NavigationMenu>
 
           {/* Right Side Actions */}
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-4 sm:gap-5 md:gap-6">
             {/* Let's Talk Button */}
             <Link href="/contact" className="max-lg:hidden">
-              <span className="text-red-500 font-medium text-sm hover:underline decoration-red-500 underline-offset-4">
+              <span className="text-red-500 font-medium text-xs sm:text-sm hover:underline decoration-red-500 underline-offset-4">
                 Let's Talk
               </span>
             </Link>
-
-            {/* Hamburger Menu Button (Mobile Only) */}
+            
+            {/* Hamburger Menu Button - Right End */}
             <button
-              className="text-red-500 relative flex size-8 lg:hidden"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="text-red-500 relative flex size-7 sm:size-8 z-50 transition-opacity hover:opacity-80"
+              onClick={() => setIsFullPageMenuOpen(!isFullPageMenuOpen)}
+              aria-label="Open main menu"
             >
-              <span className="sr-only">Open main menu</span>
-              <div className="absolute top-1/2 left-1/2 block w-[18px] -translate-x-1/2 -translate-y-1/2">
-                <span
-                  aria-hidden="true"
-                  className={`absolute block h-0.5 w-full rounded-full bg-current transition duration-500 ease-in-out ${isMenuOpen ? "rotate-45" : "-translate-y-1.5"}`}
-                ></span>
-                <span
-                  aria-hidden="true"
-                  className={`absolute block h-0.5 w-full rounded-full bg-current transition duration-500 ease-in-out ${isMenuOpen ? "opacity-0" : ""}`}
-                ></span>
-                <span
-                  aria-hidden="true"
-                  className={`absolute block h-0.5 w-full rounded-full bg-current transition duration-500 ease-in-out ${isMenuOpen ? "-rotate-45" : "translate-y-1.5"}`}
-                ></span>
-              </div>
+              {isFullPageMenuOpen ? (
+                <X className="w-5 h-5 sm:w-6 sm:h-6 text-red-500" />
+              ) : (
+                <Menu className="w-5 h-5 sm:w-6 sm:h-6 text-red-500" />
+              )}
             </button>
           </div>
         </div>
 
-        {/*  Mobile Menu Navigation */}
+        {/* Full-Page Overlay Menu */}
         <div
           className={cn(
-            "bg-white fixed inset-x-0 top-[calc(100%+1rem)] flex flex-col border-t border-gray-200 p-6 transition-all duration-300 ease-in-out lg:hidden shadow-lg",
-            isMenuOpen
-              ? "visible translate-y-0 opacity-100"
-              : "invisible -translate-y-4 opacity-0",
+            "fixed top-0 left-0 w-screen h-screen z-[100] transition-all duration-300 ease-in-out overflow-hidden",
+            isFullPageMenuOpen
+              ? "visible opacity-100"
+              : "invisible opacity-0 pointer-events-none",
           )}
         >
-          <nav className="divide-border flex flex-1 flex-col divide-y">
-            {/* Let's Talk Button for Mobile */}
-            <div className="py-4 first:pt-0 last:pb-0">
-              <Link href="/contact" className="block">
-                <span className="text-red-500 font-medium text-sm hover:underline decoration-red-500 underline-offset-4">
-                  Let's Talk
-                </span>
+          <div className="flex flex-col lg:flex-row h-screen w-screen">
+            {/* Left Section - Red Background */}
+            <div
+              className={cn(
+                "bg-red-500 flex flex-col items-center transition-all duration-300 ease-in-out",
+                "w-screen h-screen lg:w-2/3",
+                isFullPageMenuOpen
+                  ? "translate-y-0 lg:translate-x-0 opacity-100"
+                  : "-translate-y-full lg:-translate-x-full opacity-0",
+              )}
+            >
+              <div className="flex-1 flex flex-col items-center justify-center w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-8 sm:py-10 md:py-12 lg:py-16 xl:py-20 relative">
+                {/* Close Button - Mobile Only (top left) */}
+                <button
+                  onClick={() => setIsFullPageMenuOpen(false)}
+                  className="absolute top-4 left-4 lg:hidden text-white hover:opacity-80 transition-opacity z-10"
+                  aria-label="Close menu"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+
+                {/* Main Navigation Links - Centered */}
+                <nav className="w-full flex flex-col items-center">
+                  <ul className="space-y-3 sm:space-y-4 md:space-y-5 lg:space-y-6 w-full flex flex-col items-center">
+                    {MAIN_NAV_ITEMS.map((item) => (
+                      <li key={item.label} className="w-full text-center">
+                        <Link
+                          href={item.href}
+                          className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-bold hover:opacity-80 transition-opacity block"
+                          onClick={() => setIsFullPageMenuOpen(false)}
+                        >
+                          {item.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+              </div>
+            </div>
+
+            {/* Right Section - Dark Background */}
+            <div
+              className={cn(
+                "bg-gray-900 flex flex-col items-center justify-center transition-all duration-300 ease-in-out relative",
+                "w-screen h-screen lg:w-1/3",
+                "px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-8 sm:py-10 md:py-12 lg:py-12",
+                isFullPageMenuOpen
+                  ? "translate-y-0 lg:translate-x-0 opacity-100"
+                  : "translate-y-full lg:translate-x-full opacity-0",
+              )}
+            >
+              {/* Close Button - Desktop Only (top right) */}
+              <button
+                onClick={() => setIsFullPageMenuOpen(false)}
+                className="hidden lg:block absolute top-6 right-6 xl:top-8 xl:right-8 text-white hover:opacity-80 transition-opacity"
+                aria-label="Close menu"
+              >
+                <X className="w-6 h-6 lg:w-8 lg:h-8" />
+              </button>
+
+              {/* Call to Action */}
+              <div className="text-center mb-6 sm:mb-7 md:mb-8 w-full px-2">
+                <p className="text-white text-xs sm:text-sm md:text-base lg:text-base mb-1.5 sm:mb-2">
+                  Got An Idea?
+                </p>
+                <h2 className="text-white text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold">
+                  Let's craft brilliance together!
+                </h2>
+              </div>
+
+              {/* Get In Touch Button */}
+              <Link
+                href="/contact"
+                className="bg-white border-2 border-red-500 text-red-500 px-6 sm:px-7 md:px-8 lg:px-10 xl:px-12 py-2.5 sm:py-3 md:py-3 lg:py-4 rounded-lg font-semibold text-sm sm:text-base md:text-base lg:text-lg hover:bg-red-50 transition-colors text-center"
+                onClick={() => setIsFullPageMenuOpen(false)}
+              >
+                Get In Touch
               </Link>
             </div>
-            
-            {ITEMS.map((link) =>
-              link.dropdownItems ? (
-                <div key={link.label} className="py-4 first:pt-0 last:pb-0">
-                  <button
-                    onClick={() =>
-                      setOpenDropdown(
-                        openDropdown === link.label ? null : link.label,
-                      )
-                    }
-                    className="text-gray-800 flex w-full items-center justify-between text-base font-medium"
-                  >
-                    {link.label}
-                    <ChevronRight
-                      className={cn(
-                        "size-4 transition-transform duration-200",
-                        openDropdown === link.label ? "rotate-90" : "",
-                      )}
-                    />
-                  </button>
-                  <div
-                    className={cn(
-                      "overflow-hidden transition-all duration-300",
-                      openDropdown === link.label
-                        ? "mt-4 max-h-[1000px] opacity-100"
-                        : "max-h-0 opacity-0",
-                    )}
-                  >
-                    <div className="bg-muted/50 space-y-3 rounded-lg p-4">
-                      {link.dropdownItems.map((item) => (
-                        <Link
-                          key={item.title}
-                          href={item.href}
-                          className="group hover:bg-accent block rounded-md p-2 transition-colors"
-                          onClick={() => {
-                            setIsMenuOpen(false);
-                            setOpenDropdown(null);
-                          }}
-                        >
-                          <div className="transition-transform duration-200 group-hover:translate-x-1">
-                            <div className="text-gray-800 font-medium">
-                              {item.title}
-                            </div>
-
-                            <p className="text-gray-600 mt-1 text-sm">
-                              {item.description}
-                            </p>
-                          </div>
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  className={cn(
-                    "text-gray-800 hover:text-gray-600 py-4 text-base font-medium transition-colors first:pt-0 last:pb-0",
-                    pathname === link.href && "text-gray-600",
-                  )}
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              ),
-            )}
-          </nav>
+          </div>
         </div>
       </section>
     );

@@ -1,12 +1,8 @@
-# Mainline Next.js Template
+# Personal Profile
 
-Mainline is a free template built with shadcn/ui, Tailwind 4 and Next.js 15.
+A modern personal portfolio website built with Next.js 15, Tailwind CSS 4, and shadcn/ui components.
 
-- [Demo](https://mainline-nextjs-template.vercel.app/)
-- [Documentation](https://docs.shadcnblocks.com/templates/getting-started)
-- [Figma](https://www.figma.com/design/cFCLMj7DFv0sK7EVsqKeTa/Mainline?node-id=23250-13201&t=I1nAdchDpknii5Bd-1)
-
-![Mainline NextJS Template screenshot](./public/og-image.jpg)
+![Personal Profile screenshot](./public/og-image.jpg)
 
 ## Getting Started
 
@@ -70,9 +66,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 Production-ready and tested for deployment on [Vercel](https://vercel.com)
 
-## Credits
+## License
 
-- Template by [shadcnblocks.com](https://shadcnblocks.com)
-- Design by [Callum Flack](https://x.com/callumflack)
-- Dev by [Yassine Zaanouni](https://x.com/YassineZaanouni)
-- Produced by [Rob Austin](https://x.com/ausrobdev)
+MIT License - feel free to use this project for your own portfolio.

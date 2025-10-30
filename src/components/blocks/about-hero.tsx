@@ -22,17 +22,17 @@ const stats = [
 export function AboutHero() {
   return (
     <section className="">
-      <div className="container flex max-w-5xl flex-col justify-between gap-8 md:gap-20 lg:flex-row lg:items-center lg:gap-24 xl:gap-24">
+      <div className="container px-4 sm:px-6 md:px-8 lg:px-6 xl:px-4 flex max-w-5xl flex-col justify-between gap-6 sm:gap-8 md:gap-12 lg:gap-20 lg:flex-row lg:items-center xl:gap-24">
         <div className="flex-[1.5]">
-          <h1 className="text-3xl tracking-tight sm:text-4xl md:text-5xl lg:text-6xl">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl tracking-tight">
             Democratising quality software
           </h1>
 
-          <p className="text-muted-foreground mt-5 text-2xl md:text-3xl lg:text-4xl">
+          <p className="text-muted-foreground mt-3 sm:mt-4 md:mt-5 text-xl sm:text-2xl md:text-3xl lg:text-4xl">
             Mainline is bringing modern software to life with AI magic.
           </p>
 
-          <p className="text-muted-foreground mt-8 hidden max-w-lg space-y-6 text-lg text-balance md:block lg:mt-12">
+          <p className="text-muted-foreground mt-6 sm:mt-8 hidden max-w-lg space-y-4 sm:space-y-5 md:space-y-6 text-base sm:text-lg text-balance md:block lg:mt-12">
             At Mainline, we are dedicated to transforming the way teams plan,
             execute, and deliver projects. Our mission is to provide our
             customers with an unbeatable edge over delays, inefficiencies, and
@@ -62,10 +62,10 @@ export function AboutHero() {
           />
           {stats.map((stat) => (
             <div key={stat.label} className="flex flex-col gap-1">
-              <div className="font-display text-4xl tracking-wide md:text-5xl">
+              <div className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-wide">
                 {stat.value}
               </div>
-              <div className="text-muted-foreground">{stat.label}</div>
+              <div className="text-muted-foreground text-sm sm:text-base">{stat.label}</div>
             </div>
           ))}
         </div>

@@ -9,54 +9,54 @@ import { DashedLine } from "@/components/dashed-line";
 
 const contactInfo = [
   {
-    title: "Corporate office",
+    title: "Location",
     content: (
       <p className="text-muted-foreground mt-3">
-        1 Carlsberg Close
+        Your City, Country
         <br />
-        1260 Hillview, Australia
+        Available for remote work
       </p>
     ),
   },
   {
-    title: "Email us",
+    title: "Email me",
     content: (
       <div className="mt-3">
         <div>
-          <p className="">Careers</p>
+          <p className="">General inquiries</p>
           <Link
-            href="mailto:careers@example.com"
+            href="mailto:hello@yourname.com"
             className="text-muted-foreground hover:text-foreground"
           >
-            careers@example.com
+            hello@yourname.com
           </Link>
         </div>
         <div className="mt-1">
-          <p className="">Press</p>
+          <p className="">Work opportunities</p>
           <Link
-            href="mailto:press@example.com"
+            href="mailto:work@yourname.com"
             className="text-muted-foreground hover:text-foreground"
           >
-            press@example.com
+            work@yourname.com
           </Link>
         </div>
       </div>
     ),
   },
   {
-    title: "Follow us",
+    title: "Follow me",
     content: (
       <div className="mt-3 flex gap-6 lg:gap-10">
-        <Link href="#" className="text-muted-foreground hover:text-foreground">
+        <Link href="https://facebook.com/yourusername" className="text-muted-foreground hover:text-foreground">
           <Facebook className="size-5" />
         </Link>
         <Link
-          href="https://x.com/ausrobdev"
+          href="https://twitter.com/yourusername"
           className="text-muted-foreground hover:text-foreground"
         >
           <Twitter className="size-5" />
         </Link>
-        <Link href="#" className="text-muted-foreground hover:text-foreground">
+        <Link href="https://linkedin.com/in/yourusername" className="text-muted-foreground hover:text-foreground">
           <Linkedin className="size-5" />
         </Link>
       </div>
@@ -66,16 +66,16 @@ const contactInfo = [
 
 export default function Contact() {
   return (
-    <section className="py-28 lg:py-32 lg:pt-44">
-      <div className="container max-w-2xl">
-        <h1 className="text-center text-2xl font-semibold tracking-tight md:text-4xl lg:text-5xl">
+    <section className="py-12 sm:py-16 md:py-20 lg:py-28 lg:pt-32 xl:pt-44">
+      <div className="container px-4 sm:px-6 md:px-8 lg:px-6 xl:px-4 max-w-2xl">
+        <h1 className="text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight">
           Contact us
         </h1>
-        <p className="text-muted-foreground mt-4 text-center leading-snug font-medium lg:mx-auto">
+        <p className="text-muted-foreground mt-3 sm:mt-4 text-center text-sm sm:text-base leading-snug font-medium lg:mx-auto">
           Hopefully this form gets through our spam filters.
         </p>
 
-        <div className="mt-10 flex justify-between gap-8 max-sm:flex-col md:mt-14 lg:mt-20 lg:gap-12">
+        <div className="mt-6 sm:mt-8 md:mt-10 lg:mt-14 xl:mt-20 flex flex-col sm:flex-row justify-between gap-4 sm:gap-6 md:gap-8 lg:gap-12">
           {contactInfo.map((info, index) => (
             <div key={index}>
               <h2 className="font-medium">{info.title}</h2>
@@ -84,11 +84,11 @@ export default function Contact() {
           ))}
         </div>
 
-        <DashedLine className="my-12" />
+        <DashedLine className="my-8 sm:my-10 md:my-12" />
 
         {/* Inquiry Form */}
         <div className="mx-auto">
-          <h2 className="mb-4 text-lg font-semibold">Inquiries</h2>
+          <h2 className="mb-3 sm:mb-4 text-base sm:text-lg font-semibold">Inquiries</h2>
           <ContactForm />
         </div>
       </div>

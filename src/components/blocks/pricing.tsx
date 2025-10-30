@@ -53,20 +53,20 @@ export const Pricing = ({ className }: { className?: string }) => {
   const [isAnnual, setIsAnnual] = useState(true);
 
   return (
-    <section className={cn("py-28 lg:py-32", className)}>
-      <div className="container max-w-5xl">
-        <div className="space-y-4 text-center">
-          <h2 className="text-2xl tracking-tight md:text-4xl lg:text-5xl">
+    <section className={cn("py-12 sm:py-16 md:py-20 lg:py-28 xl:py-32", className)}>
+      <div className="container px-4 sm:px-6 md:px-8 lg:px-6 xl:px-4 max-w-5xl">
+        <div className="space-y-3 sm:space-y-4 text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-tight">
             Pricing
           </h2>
-          <p className="text-muted-foreground mx-auto max-w-xl leading-snug text-balance">
+          <p className="text-muted-foreground mx-auto max-w-xl text-sm sm:text-base leading-snug text-balance">
             Use Mainline for free with your whole team. Upgrade to enable
             unlimited issues, enhanced security controls, and additional
             features.
           </p>
         </div>
 
-        <div className="mt-8 grid items-start gap-5 text-start md:mt-12 md:grid-cols-3 lg:mt-20">
+        <div className="mt-6 sm:mt-8 md:mt-12 lg:mt-16 xl:mt-20 grid items-start gap-4 sm:gap-5 text-start md:grid-cols-3">
           {plans.map((plan) => (
             <Card
               key={plan.name}

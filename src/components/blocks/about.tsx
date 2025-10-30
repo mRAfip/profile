@@ -6,9 +6,9 @@ import { cn } from "@/lib/utils";
 
 const About = () => {
   return (
-    <section className="container mt-10 flex max-w-5xl flex-col-reverse gap-8 md:mt-14 md:gap-14 lg:mt-20 lg:flex-row lg:items-end">
+    <section className="container px-4 sm:px-6 md:px-8 lg:px-6 xl:px-4 mt-8 sm:mt-10 md:mt-14 lg:mt-20 flex max-w-5xl flex-col-reverse gap-6 sm:gap-8 md:gap-12 lg:gap-14 lg:flex-row lg:items-end">
       {/* Images Left - Text Right */}
-      <div className="flex flex-col gap-8 lg:gap-16 xl:gap-20">
+      <div className="flex flex-col gap-6 sm:gap-8 md:gap-12 lg:gap-16 xl:gap-20">
         <ImageSection
           images={[
             { src: "/about/1.webp", alt: "Team collaboration" },
@@ -32,7 +32,7 @@ const About = () => {
       </div>
 
       {/* Text Left - Images Right */}
-      <div className="flex flex-col gap-8 lg:gap-16 xl:gap-20">
+      <div className="flex flex-col gap-6 sm:gap-8 md:gap-12 lg:gap-16 xl:gap-20">
         <TextSection
           paragraphs={[
             "At Mainline, we are dedicated to transforming the way teams plan, execute, and deliver projects. Our mission is to provide our customers with an unbeatable edge over delays, inefficiencies, and disorganisation through actionable insights and seamless collaboration. We'll stop at nothing to give you the tools you need to get every project across the finish line.",
@@ -93,15 +93,15 @@ export function TextSection({
   ctaButton,
 }: TextSectionProps) {
   return (
-    <section className="flex-1 space-y-4 text-lg md:space-y-6">
-      {title && <h2 className="text-foreground text-4xl">{title}</h2>}
-      <div className="text-muted-foreground max-w-xl space-y-6">
+    <section className="flex-1 space-y-3 sm:space-y-4 md:space-y-6 text-base sm:text-lg md:text-lg">
+      {title && <h2 className="text-foreground text-2xl sm:text-3xl md:text-4xl">{title}</h2>}
+      <div className="text-muted-foreground max-w-xl space-y-4 sm:space-y-5 md:space-y-6">
         {paragraphs.map((paragraph, index) => (
           <p key={index}>{paragraph}</p>
         ))}
       </div>
       {ctaButton && (
-        <div className="mt-8">
+        <div className="mt-6 sm:mt-8">
           <Link href={ctaButton.href}>
             <Button size="lg">{ctaButton.text}</Button>
           </Link>

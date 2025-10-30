@@ -6,13 +6,13 @@ import { cn } from "@/lib/utils";
 
 const topItems = [
   {
-    title: "Reusable issue templates.",
+    title: "Modern Web Development",
     description:
-      "Draft lightning-fast documents with our Smart Instructions and Templates.",
+      "Building responsive, fast, and accessible websites using the latest technologies and best practices.",
     images: [
       {
         src: "/resource-allocation/templates.webp",
-        alt: "Issue template interface",
+        alt: "Web development showcase",
         width: 495,
         height: 186,
       },
@@ -22,8 +22,8 @@ const topItems = [
     fade: [""],
   },
   {
-    title: "Simplify your stack.",
-    description: "No more Confluence, SharePoint, or Microsoft Word.",
+    title: "Technology Stack",
+    description: "Working with modern tools and frameworks to deliver exceptional results.",
     images: [
       { src: "/logos/jira.svg", alt: "Jira logo", width: 48, height: 48 },
       { src: "/logos/excel.svg", alt: "Excel logo", width: 48, height: 48 },
@@ -115,32 +115,32 @@ export const ResourceAllocation = () => {
   return (
     <section
       id="resource-allocation"
-      className="overflow-hidden pb-28 lg:pb-32"
+      className="overflow-hidden pb-20 sm:pb-24 md:pb-28 lg:pb-32"
     >
       <div className="">
-        <h2 className="container text-center text-3xl tracking-tight text-balance sm:text-4xl md:text-5xl lg:text-6xl">
-          Mainline your resource allocation and execution
+        <h2 className="container px-4 sm:px-6 md:px-8 lg:px-6 xl:px-4 text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl tracking-tight text-balance">
+          Bringing your digital vision to life
         </h2>
 
-        <div className="mt-8 md:mt-12 lg:mt-20">
+        <div className="mt-6 sm:mt-8 md:mt-12 lg:mt-20">
           <DashedLine
             orientation="horizontal"
-            className="container scale-x-105"
+            className="container px-4 sm:px-6 md:px-8 lg:px-6 xl:px-4 scale-x-105"
           />
 
           {/* Top Features Grid - 2 items */}
-          <div className="relative container flex max-md:flex-col">
+          <div className="relative container px-4 sm:px-6 md:px-8 lg:px-6 xl:px-4 flex max-md:flex-col">
             {topItems.map((item, i) => (
               <Item key={i} item={item} isLast={i === topItems.length - 1} />
             ))}
           </div>
           <DashedLine
             orientation="horizontal"
-            className="container max-w-7xl scale-x-110"
+            className="container px-4 sm:px-6 md:px-8 lg:px-6 xl:px-4 max-w-7xl scale-x-110"
           />
 
           {/* Bottom Features Grid - 3 items */}
-          <div className="relative container grid max-w-7xl md:grid-cols-3">
+          <div className="relative container px-4 sm:px-6 md:px-8 lg:px-6 xl:px-4 grid max-w-7xl md:grid-cols-3">
             {bottomItems.map((item, i) => (
               <Item
                 key={i}
@@ -153,7 +153,7 @@ export const ResourceAllocation = () => {
         </div>
         <DashedLine
           orientation="horizontal"
-          className="container max-w-7xl scale-x-110"
+          className="container px-4 sm:px-6 md:px-8 lg:px-6 xl:px-4 max-w-7xl scale-x-110"
         />
       </div>
     </section>
@@ -170,7 +170,7 @@ const Item = ({ item, isLast, className }: ItemProps) => {
   return (
     <div
       className={cn(
-        "relative flex flex-col justify-between px-0 py-6 md:px-6 md:py-8",
+        "relative flex flex-col justify-between px-4 sm:px-4 md:px-6 py-4 sm:py-5 md:py-6 lg:py-8",
         className,
         item.className,
       )}

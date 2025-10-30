@@ -83,13 +83,13 @@ export const Testimonials = ({
 }) => {
   return (
     <>
-      <section className={cn("overflow-hidden py-28 lg:py-32", className)}>
-        <div className="container">
-          <div className="space-y-4">
-            <h2 className="text-2xl tracking-tight md:text-4xl lg:text-5xl">
+      <section className={cn("overflow-hidden py-12 sm:py-16 md:py-20 lg:py-28 xl:py-32", className)}>
+        <div className="container px-4 sm:px-6 md:px-8 lg:px-6 xl:px-4">
+          <div className="space-y-3 sm:space-y-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-tight">
               Trusted by product builders
             </h2>
-            <p className="text-muted-foreground max-w-md leading-snug">
+            <p className="text-muted-foreground max-w-md text-sm sm:text-base leading-snug">
               Mainline is built on the habits that make the best product teams
               successful: staying focused, moving quickly, and always aiming for
               high-quality work.
@@ -99,7 +99,7 @@ export const Testimonials = ({
             </Button>
           </div>
 
-          <div className="relative mt-8 -mr-[max(3rem,calc((100vw-80rem)/2+3rem))] md:mt-12 lg:mt-20">
+          <div className="relative mt-6 sm:mt-8 md:mt-12 lg:mt-16 xl:mt-20 -mr-4 sm:-mr-6 md:-mr-[max(3rem,calc((100vw-80rem)/2+3rem))]">
             <Carousel
               opts={{
                 align: "start",
