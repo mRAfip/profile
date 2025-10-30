@@ -84,7 +84,7 @@ export const Logos = () => {
   ];
 
   return (
-    <section className="pb-20 sm:pb-24 md:pb-28 lg:pb-32">
+    <section className="pb-20 sm:pb-24 md:pb-28 lg:pb-32 overflow-x-hidden">
       <div className="container px-4 sm:px-6 md:px-8 lg:px-6 xl:px-4 space-y-8 sm:space-y-10 md:space-y-12 lg:space-y-16">
         <div className="text-center">
           <h2 className="mb-3 sm:mb-4 text-lg sm:text-xl md:text-2xl lg:text-3xl text-balance">
@@ -144,21 +144,22 @@ const LogoRow = ({ companies, gridClassName, direction }: LogoRowProps) => {
       </div>
 
       {/* Mobile marquee version */}
-      <div className="md:hidden">
-        <Marquee direction={direction} pauseOnHover>
+      <div className="md:hidden w-full overflow-hidden px-4">
+        <Marquee direction={direction} pauseOnHover gradient={false} speed={40}>
           {companies.map((company, index) => (
             <Link
               href={company.href}
               target="_blank"
               key={index}
-              className="mx-8 inline-block transition-opacity hover:opacity-70"
+              className="mx-6 sm:mx-8 inline-block transition-opacity hover:opacity-70"
+              aria-label={company.name}
             >
               <Image
                 src={company.logo}
                 alt={`${company.name} logo`}
                 width={company.width}
                 height={company.height}
-                className="object-contain"
+                className="object-contain opacity-50 hover:opacity-70 grayscale hover:grayscale-0 dark:invert dark:opacity-100"
               />
             </Link>
           ))}
