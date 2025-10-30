@@ -5,7 +5,7 @@ import { Hero } from "@/components/blocks/hero";
 import { Logos } from "@/components/blocks/logos";
 import { Pricing } from "@/components/blocks/pricing";
 import { ResourceAllocation } from "@/components/blocks/resource-allocation";
-import { Testimonials } from "@/components/blocks/testimonials";
+import { SingleTestimonial } from "@/components/blocks/single-testimonial";
 
 export default function Home() {
   return (
@@ -16,7 +16,7 @@ export default function Home() {
         <Features />
         <ResourceAllocation />
       </Background>
-      <Testimonials />
+      <SingleTestimonial variant={1} />
       <Background variant="bottom">
         <Pricing />
         <FAQ />
