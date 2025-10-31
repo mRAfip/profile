@@ -9,15 +9,18 @@
 
   const items = [
     {
-      title: "UI/UX Design Excellence",
+      title: "UI/UX Design",
+      description: "User interface and user experience design for websites and mobile apps",
       image: "/features/triage-card.svg",
     },
     {
-      title: "Web & Mobile Development",
+      title: "Web Development",
+      description: "Custom website and mobile app development services",
       image: "/features/cycle-card.svg",
     },
     {
-      title: "AI-Powered Solutions",
+      title: "AI Development",
+      description: "Artificial intelligence integration and AI-powered features",
       image: "/features/overview-card.svg",
     },
   ];
@@ -37,12 +40,11 @@
           {/* Content */}
           <div className="mx-auto mt-10 grid max-w-4xl items-center gap-3 md:gap-0 lg:mt-24 lg:grid-cols-2">
             <h2 className="text-2xl text-balance tracking-tight md:text-4xl lg:text-5xl">
-              Comprehensive digital solutions
+              My Services
             </h2>
             <p className="text-black/50 leading-snug">
-              From intuitive user experiences to cutting-edge AI applications, 
-              I deliver end-to-end solutions that drive business growth and 
-              exceed user expectations.
+              I provide UI/UX design, web development, and AI development services. 
+              I help you build websites, mobile apps, and digital products.
             </p>
           </div>
 
@@ -62,19 +64,24 @@
                       <div className="from-background absolute inset-0 z-10 bg-linear-to-t via-transparent to-transparent" />
                     </div>
 
-                    <Link
-                      href="#"
-                      className={
-                        "group flex items-center justify-between gap-4 pe-4 pt-4 md:pe-6 md:pt-6"
-                      }
-                    >
-                      <h3 className="font-display max-w-60 text-2xl leading-tight font-bold tracking-tight">
-                        {item.title}
-                      </h3>
-                      <div className="rounded-full border p-2">
-                        <ChevronRight className="size-6 transition-transform group-hover:translate-x-1 lg:size-9" />
-                      </div>
-                    </Link>
+                    <div className="pe-4 pt-4 md:pe-6 md:pt-6">
+                      <Link
+                        href="#"
+                        className="group flex items-start justify-between gap-4"
+                      >
+                        <div className="flex-1">
+                          <h3 className="font-display max-w-60 text-2xl leading-tight font-bold tracking-tight mb-2">
+                            {item.title}
+                          </h3>
+                          <p className="text-sm text-muted-foreground leading-snug">
+                            {item.description}
+                          </p>
+                        </div>
+                        <div className="rounded-full border p-2 flex-shrink-0">
+                          <ChevronRight className="size-6 transition-transform group-hover:translate-x-1 lg:size-9" />
+                        </div>
+                      </Link>
+                    </div>
                   </div>
                   {i < items.length - 1 && (
                     <div className="relative hidden md:block">

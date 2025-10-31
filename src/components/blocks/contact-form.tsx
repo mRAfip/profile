@@ -241,7 +241,7 @@ export function ContactForm() {
           )}
         />
         <div className="flex w-full items-center justify-end pt-3">
-          <Button className="rounded-lg" size="sm">
+          <Button className="rounded-lg text-white bg-red-500 hover:bg-red-600" size="sm">
             {isExecuting ? "Submitting..." : "Submit"}
           </Button>
         </div>

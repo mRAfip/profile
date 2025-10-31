@@ -23,7 +23,7 @@ const CONTENT_MAP: Record<TestimonialVariant, TestimonialContent> = {
     name: "Caroline G.",
     title: "Google Prompting Essentials • Graduate",
     avatarSrc: "/testimonials/amy-chase.webp",
-    ctaLabel: "Google Prompting Essentials",
+    ctaLabel: "Book a call",
     ctaHref: "/contact",
   },
   2: {

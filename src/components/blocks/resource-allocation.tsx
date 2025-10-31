@@ -1,59 +1,69 @@
 import Image from "next/image";
+import Link from "next/link";
+
+import { ExternalLink } from "lucide-react";
 
 import { DashedLine } from "../dashed-line";
+import { Highlighter } from "@/components/ui/highlighter";
 
 import { cn } from "@/lib/utils";
 
 const topItems = [
   {
-    title: "Modern Web Development",
+    title: "E-commerce Platform Redesign",
+    titleColor: "#FFB6C1",
     description:
-      "Building responsive, fast, and accessible websites using the latest technologies and best practices.",
+      "A complete UX overhaul that increased conversion rates by 45% through intuitive navigation and streamlined checkout flow.",
     images: [
       {
         src: "/resource-allocation/templates.webp",
-        alt: "Web development showcase",
+        alt: "E-commerce platform redesign case study",
         width: 495,
         height: 186,
       },
     ],
+    ctaLabel: "View Case Study",
+    ctaHref: "/case-studies/ecommerce",
     className:
       "flex-1 [&>.title-container]:mb-5 md:[&>.title-container]:mb-8 xl:[&>.image-container]:translate-x-6 [&>.image-container]:translate-x-2",
     fade: [""],
   },
   {
-    title: "Technology Stack",
-    description: "Working with modern tools and frameworks to deliver exceptional results.",
+    title: "Mobile Banking App",
+    titleColor: "#87CEEB",
+    description: "Designing secure, user-friendly financial management tools that make banking accessible and intuitive.",
     images: [
-      { src: "/logos/jira.svg", alt: "Jira logo", width: 48, height: 48 },
-      { src: "/logos/excel.svg", alt: "Excel logo", width: 48, height: 48 },
+      { src: "/logos/jira.svg", alt: "Mobile banking interface", width: 48, height: 48 },
+      { src: "/logos/excel.svg", alt: "Mobile banking interface", width: 48, height: 48 },
       {
         src: "/logos/notion.svg",
-        alt: "Notion logo",
+        alt: "Mobile banking interface",
         width: 48,
         height: 48,
       },
-      { src: "/logos/word.svg", alt: "Word logo", width: 48, height: 48 },
+      { src: "/logos/word.svg", alt: "Mobile banking interface", width: 48, height: 48 },
       {
         src: "/logos/monday.svg",
-        alt: "Monday logo",
+        alt: "Mobile banking interface",
         width: 48,
         height: 48,
       },
       {
         src: "/logos/drive.svg",
-        alt: "Google Drive logo",
+        alt: "Mobile banking interface",
         width: 48,
         height: 48,
       },
       {
         src: "/logos/jira.svg",
-        alt: "Jira logo",
+        alt: "Mobile banking interface",
         width: 48,
         height: 48,
       },
-      { src: "/logos/asana.svg", alt: "Asana logo", width: 48, height: 48 },
+      { src: "/logos/asana.svg", alt: "Mobile banking interface", width: 48, height: 48 },
     ],
+    ctaLabel: "View Case Study",
+    ctaHref: "/case-studies/banking",
     className:
       "flex-1 [&>.title-container]:mb-5 md:[&>.title-container]:mb-8 md:[&>.title-container]:translate-x-2 xl:[&>.title-container]:translate-x-4 [&>.title-container]:translate-x-0",
     fade: [],
@@ -62,49 +72,58 @@ const topItems = [
 
 const bottomItems = [
   {
-    title: "Graveyard it.",
+    title: "Healthcare Appointment System",
+    titleColor: "#FFE4B5",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do.",
+      "Simplifying patient scheduling with an elegant, accessible design that reduced booking time by 60%.",
     images: [
       {
         src: "/resource-allocation/graveyard.webp",
-        alt: "Graveyard interface",
+        alt: "Healthcare appointment system interface",
         width: 305,
         height: 280,
       },
     ],
+    ctaLabel: "View Case Study",
+    ctaHref: "/case-studies/healthcare",
     className:
       "[&>.title-container]:mb-5 md:[&>.title-container]:mb-8 xl:[&>.image-container]:translate-x-6 [&>.image-container]:translate-x-2",
     fade: ["bottom"],
   },
   {
-    title: "Task discussions.",
+    title: "SaaS Dashboard Interface",
+    titleColor: "#DDA0DD",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod.",
+      "Creating powerful analytics dashboards that make complex data accessible and actionable for business teams.",
     images: [
       {
         src: "/resource-allocation/discussions.webp",
-        alt: "Task discussions interface",
+        alt: "SaaS dashboard interface",
         width: 320,
         height: 103,
       },
     ],
+    ctaLabel: "View Case Study",
+    ctaHref: "/case-studies/saas",
     className:
       "justify-normal [&>.title-container]:mb-5 md:[&>.title-container]:mb-0 [&>.image-container]:flex-1 md:[&>.image-container]:place-items-center md:[&>.image-container]:-translate-y-3",
     fade: [""],
   },
   {
-    title: "Notifications.",
+    title: "Travel Booking Platform",
+    titleColor: "#98D8C8",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod.",
+      "Crafting seamless travel experiences from discovery to booking, increasing user engagement by 52%.",
     images: [
       {
         src: "/resource-allocation/notifications.webp",
-        alt: "Notifications interface",
+        alt: "Travel booking platform interface",
         width: 305,
         height: 280,
       },
     ],
+    ctaLabel: "View Case Study",
+    ctaHref: "/case-studies/travel",
     className:
       "[&>.title-container]:mb-5 md:[&>.title-container]:mb-8 xl:[&>.image-container]:translate-x-6 [&>.image-container]:translate-x-2",
     fade: ["bottom"],
@@ -119,7 +138,7 @@ export const ResourceAllocation = () => {
     >
       <div className="">
         <h2 className="container px-4 sm:px-6 md:px-8 lg:px-6 xl:px-4 text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl tracking-tight text-balance">
-          Bringing your digital vision to life
+          Case Studies
         </h2>
 
         <div className="mt-6 sm:mt-8 md:mt-12 lg:mt-20">
@@ -161,7 +180,11 @@ export const ResourceAllocation = () => {
 };
 
 interface ItemProps {
-  item: (typeof topItems)[number] | (typeof bottomItems)[number];
+  item: ((typeof topItems)[number] | (typeof bottomItems)[number]) & {
+    ctaLabel?: string;
+    ctaHref?: string;
+    titleColor?: string;
+  };
   isLast?: boolean;
   className?: string;
 }
@@ -176,7 +199,15 @@ const Item = ({ item, isLast, className }: ItemProps) => {
       )}
     >
       <div className="title-container text-balance">
-        <h3 className="inline font-semibold">{item.title} </h3>
+        <h3 className="inline font-semibold">
+          <Highlighter
+            action="highlight"
+            color={item.titleColor || "#ffd1dc"}
+            isView={true}
+          >
+            {item.title}
+          </Highlighter>
+        </h3>
         <span className="text-muted-foreground"> {item.description}</span>
       </div>
 
@@ -236,6 +267,18 @@ const Item = ({ item, isLast, className }: ItemProps) => {
               className="object-contain object-left-top"
             />
           ))}
+        </div>
+      )}
+
+      {item.ctaLabel && item.ctaHref && (
+        <div className="mt-4">
+          <Link
+            href={item.ctaHref}
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-blue-600 hover:underline group"
+          >
+            {item.ctaLabel}
+            <ExternalLink className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </Link>
         </div>
       )}
 

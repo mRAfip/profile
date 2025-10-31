@@ -10,52 +10,62 @@ import { cn } from "@/lib/utils";
 
 const categories = [
   {
-    title: "Support",
+    title: "Services",
     questions: [
       {
-        question: "How do I update my account without breaking my laptop?",
+        question: "What services do you offer?",
         answer:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus voluptates deserunt officia temporibus dignissimos.",
+          "I provide UI/UX design, web development, mobile app development, and full product development services. I work on projects from initial design concepts to final deployment, including website design, mobile applications, and AI-powered features.",
       },
       {
-        question: "Is support free, or do I need to Google everything?",
+        question: "Do you work on both web and mobile projects?",
         answer:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus voluptates deserunt officia temporibus dignissimos.",
+          "Yes, I design and develop websites and mobile applications. I can create responsive websites, iOS and Android mobile apps, and cross-platform solutions depending on your project needs.",
       },
       {
-        question: "Are you going to be subsumed by AI?",
+        question: "What is your design process?",
         answer:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus voluptates deserunt officia temporibus dignissimos.",
+          "My process starts with understanding your business goals and user needs. I create wireframes, design mockups, and prototypes. After design approval, I move to development, testing, and deployment. I keep you updated throughout the project.",
       },
     ],
   },
   {
-    title: "Your account",
+    title: "Projects & Timeline",
     questions: [
       {
-        question: "Is support free, or do I need to Google everything?",
+        question: "How long does a typical project take?",
         answer:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus voluptates deserunt officia temporibus dignissimos.",
+          "Project timelines vary based on scope. A simple website can take 2-4 weeks, while a complete product with design and development can take 8-12 weeks or more. I provide detailed timelines during our initial consultation.",
       },
       {
-        question: "Are you going to be subsumed by AI?",
+        question: "Do you handle the entire product development process?",
         answer:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus voluptates deserunt officia temporibus dignissimos.",
+          "Yes, I can handle the complete product development process from UI/UX design to final development and deployment. I also offer design-only or development-only services if you need specific parts of the process.",
+      },
+      {
+        question: "What technologies do you use?",
+        answer:
+          "I work with modern web technologies like React, Next.js, and TypeScript for web development. For mobile apps, I use React Native and native development. I also integrate AI features and third-party APIs as needed for your project.",
       },
     ],
   },
   {
-    title: "Other questions",
+    title: "Pricing & Getting Started",
     questions: [
       {
-        question: "Is support free, or do I need to Google everything?",
+        question: "How do you price your projects?",
         answer:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus voluptates deserunt officia temporibus dignissimos.",
+          "Project pricing depends on scope, complexity, and timeline. I provide detailed quotes after understanding your requirements. You can book a meeting to discuss your project and get a custom estimate.",
       },
       {
-        question: "Are you going to be subsumed by AI?",
+        question: "Do you offer ongoing support after project completion?",
         answer:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus voluptates deserunt officia temporibus dignissimos.",
+          "Yes, I offer maintenance and support packages after project completion. This includes bug fixes, updates, and feature additions. We can discuss support options based on your needs.",
+      },
+      {
+        question: "How do I get started?",
+        answer:
+          "Start by booking a meeting to discuss your project. I'll learn about your goals, requirements, and timeline. After our discussion, I'll provide a detailed proposal with pricing and timeline. You can schedule a meeting using the Book Meeting button on this page.",
       },
     ],
   },

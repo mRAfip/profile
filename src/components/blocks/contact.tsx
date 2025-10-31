@@ -12,7 +12,7 @@ const contactInfo = [
     title: "Location",
     content: (
       <p className="text-muted-foreground mt-3">
-        Your City, Country
+        Kozhikode, Kerala
         <br />
         Available for remote work
       </p>
@@ -23,21 +23,12 @@ const contactInfo = [
     content: (
       <div className="mt-3">
         <div>
-          <p className="">General inquiries</p>
+          <p className="text-muted-foreground text-sm">Work opportunities</p>
           <Link
-            href="mailto:hello@yourname.com"
-            className="text-muted-foreground hover:text-foreground"
+            href="mailto:work.rafipmkm@gmail.com"
+            className="text-muted-foreground hover:text-red-500 transition-colors"
           >
-            hello@yourname.com
-          </Link>
-        </div>
-        <div className="mt-1">
-          <p className="">Work opportunities</p>
-          <Link
-            href="mailto:work@yourname.com"
-            className="text-muted-foreground hover:text-foreground"
-          >
-            work@yourname.com
+            work.rafipmkm@gmail.com
           </Link>
         </div>
       </div>
@@ -47,16 +38,16 @@ const contactInfo = [
     title: "Follow me",
     content: (
       <div className="mt-3 flex gap-6 lg:gap-10">
-        <Link href="https://facebook.com/yourusername" className="text-muted-foreground hover:text-foreground">
+        <Link href="https://facebook.com/yourusername" className="text-muted-foreground hover:text-red-500 transition-colors">
           <Facebook className="size-5" />
         </Link>
         <Link
           href="https://twitter.com/yourusername"
-          className="text-muted-foreground hover:text-foreground"
+          className="text-muted-foreground hover:text-red-500 transition-colors"
         >
           <Twitter className="size-5" />
         </Link>
-        <Link href="https://linkedin.com/in/yourusername" className="text-muted-foreground hover:text-foreground">
+        <Link href="https://linkedin.com/in/yourusername" className="text-muted-foreground hover:text-red-500 transition-colors">
           <Linkedin className="size-5" />
         </Link>
       </div>
@@ -69,10 +60,10 @@ export default function Contact() {
     <section className="py-12 sm:py-16 md:py-20 lg:py-28 lg:pt-32 xl:pt-44">
       <div className="container px-4 sm:px-6 md:px-8 lg:px-6 xl:px-4 max-w-2xl">
         <h1 className="text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight">
-          Contact us
+          Get in Touch
         </h1>
         <p className="text-muted-foreground mt-3 sm:mt-4 text-center text-sm sm:text-base leading-snug font-medium lg:mx-auto">
-          Hopefully this form gets through our spam filters.
+          Let's discuss your project or answer any questions you may have.
         </p>
 
         <div className="mt-6 sm:mt-8 md:mt-10 lg:mt-14 xl:mt-20 flex flex-col sm:flex-row justify-between gap-4 sm:gap-6 md:gap-8 lg:gap-12">
