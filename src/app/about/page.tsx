@@ -10,11 +10,11 @@ export default function AboutPage() {
       <div className="py-12 sm:py-16 md:py-20 lg:py-28 lg:pt-32 xl:pt-44">
         <AboutHero />
 
-        <About />
-        <div className="pt-12 sm:pt-16 md:pt-20 lg:pt-28 xl:pt-32">
+        {/* <About /> */}
+        {/* <div className="pt-12 sm:pt-16 md:pt-20 lg:pt-28 xl:pt-32">
           <DashedLine className="container max-w-5xl scale-x-115" />
           <Investors />
-        </div>
+        </div> */}
       </div>
     </Background>
   );

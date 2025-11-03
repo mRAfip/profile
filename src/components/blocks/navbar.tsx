@@ -1,6 +1,6 @@
   "use client";
 
-  import { useState, useEffect } from "react";
+  import { useState, useEffect, useRef } from "react";
 
   import Image from "next/image";
   import Link from "next/link";
@@ -10,54 +10,34 @@
 
   import {
     NavigationMenu,
-    NavigationMenuContent,
     NavigationMenuItem,
-    NavigationMenuLink,
     NavigationMenuList,
-    NavigationMenuTrigger,
   } from "@/components/ui/navigation-menu";
+  import { ServicesDropdown } from "@/components/blocks/services-dropdown";
   import { cn } from "@/lib/utils";
 
   const ITEMS = [
-    {
-      label: "Services",
-      href: "#services",
-      dropdownItems: [
-        {
-          title: "UI/UX Design",
-          href: "/#ui-ux-design",
-          description:
-            "Creating intuitive and beautiful user experiences that drive engagement",
-        },
-        {
-          title: "Web & Mobile Development",
-          href: "/#web-mobile",
-          description: "Full-stack development for web and mobile applications",
-        },
-        {
-          title: "AI Applications",
-          href: "/#ai-solutions",
-          description: "Intelligent solutions powered by artificial intelligence",
-        },
-      ],
-    },
     { label: "About", href: "/about" },
-    { label: "Portfolio", href: "/portfolio" },
+    { label: "Services", href: "/services" },
+    { label: "Process", href: "/process" },
     { label: "Contact", href: "/contact" },
   ];
 
   const MAIN_NAV_ITEMS = [
     { label: "Home", href: "/" },
-    { label: "Services", href: "#services" },
-    { label: "Projects", href: "/portfolio" },
-    { label: "Process", href: "#process" },
     { label: "About", href: "/about" },
+    { label: "Services", href: "/services" },
+    { label: "Process", href: "/process" },
+    { label: "Contact", href: "/contact" },
   ];
 
 
   export const Navbar = () => {
     const [isFullPageMenuOpen, setIsFullPageMenuOpen] = useState(false);
+    const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
     const pathname = usePathname();
+    const servicesDropdownRef = useRef<HTMLDivElement>(null);
+    const servicesLinkRef = useRef<HTMLAnchorElement>(null);
 
     // Prevent body scroll when full-page menu is open
     useEffect(() => {
@@ -71,7 +51,30 @@
       };
     }, [isFullPageMenuOpen]);
 
+    // Handle click outside to close services dropdown
+    useEffect(() => {
+      const handleClickOutside = (event: MouseEvent) => {
+        if (
+          servicesDropdownRef.current &&
+          servicesLinkRef.current &&
+          !servicesDropdownRef.current.contains(event.target as Node) &&
+          !servicesLinkRef.current.contains(event.target as Node)
+        ) {
+          setIsServicesDropdownOpen(false);
+        }
+      };
+
+      if (isServicesDropdownOpen) {
+        document.addEventListener("mousedown", handleClickOutside);
+      }
+
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [isServicesDropdownOpen]);
+
     return (
+      <>
       <section
         className={cn(
           "bg-transparent absolute  left-0 right-0 z-50 w-full transition-all duration-300",
@@ -99,50 +102,38 @@
           {/* Desktop Navigation */}
           <NavigationMenu className="max-lg:hidden">
             <NavigationMenuList>
-              {ITEMS.map((link) =>
-                link.dropdownItems ? (
-                  <NavigationMenuItem key={link.label} className="">
-                    <NavigationMenuTrigger className="data-[state=open]:bg-accent/50 bg-transparent! px-1.5 text-xs sm:text-sm font-medium text-gray-800">
-                      {link.label}
-                    </NavigationMenuTrigger>
-                    <NavigationMenuContent>
-                      <ul className="w-[400px] space-y-2 p-4">
-                        {link.dropdownItems.map((item) => (
-                          <li key={item.title}>
-                            <NavigationMenuLink asChild>
-                              <Link
-                                href={item.href}
-                                className="group hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground flex items-center gap-4 rounded-md p-3 leading-none no-underline outline-hidden transition-colors select-none"
-                              >
-                                <div className="space-y-1.5 transition-transform duration-300 group-hover:translate-x-1">
-                                  <div className="text-sm leading-none font-medium">
-                                    {item.title}
-                                  </div>
-                                  <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
-                                    {item.description}
-                                  </p>
-                                </div>
-                              </Link>
-                            </NavigationMenuLink>
-                          </li>
-                        ))}
-                      </ul>
-                    </NavigationMenuContent>
-                  </NavigationMenuItem>
-                ) : (
-                  <NavigationMenuItem key={link.label} className="">
+              {ITEMS.map((link) => (
+                <NavigationMenuItem key={link.label} className="relative">
+                  {link.label === "Services" ? (
+                    <div
+                      className="relative"
+                      onMouseEnter={() => setIsServicesDropdownOpen(true)}
+                    >
+                      <Link
+                        ref={servicesLinkRef}
+                        data-services-link
+                        href={link.href}
+                        className={cn(
+                          "relative bg-transparent px-1.5 text-xs sm:text-sm font-medium text-gray-800 transition-colors hover:text-red-500",
+                          pathname === link.href && "text-red-500",
+                        )}
+                      >
+                        {link.label}
+                      </Link>
+                    </div>
+                  ) : (
                     <Link
                       href={link.href}
                       className={cn(
-                        "relative bg-transparent px-1.5 text-xs sm:text-sm font-medium text-gray-800 transition-opacity hover:opacity-75",
-                        pathname === link.href && "text-gray-600",
+                        "relative bg-transparent px-1.5 text-xs sm:text-sm font-medium text-gray-800 transition-colors hover:text-red-500",
+                        pathname === link.href && "text-red-500",
                       )}
                     >
                       {link.label}
                     </Link>
-                  </NavigationMenuItem>
-                ),
-              )}
+                  )}
+                </NavigationMenuItem>
+              ))}
             </NavigationMenuList>
           </NavigationMenu>
 
@@ -261,5 +252,22 @@
           </div>
         </div>
       </section>
+
+      {/* Services Dropdown - Full width, positioned below navbar */}
+      {isServicesDropdownOpen && (
+        <div
+          ref={servicesDropdownRef}
+          data-services-dropdown
+          className="fixed left-0 right-0 z-40 w-full"
+          style={{ top: '73px' }}
+          onMouseEnter={() => setIsServicesDropdownOpen(true)}
+          onMouseLeave={() => setIsServicesDropdownOpen(false)}
+        >
+          {/* Invisible bridge to prevent gap between navbar and dropdown */}
+          <div className="h-2 bg-transparent" />
+          <ServicesDropdown />
+        </div>
+      )}
+      </>
     );
   };
