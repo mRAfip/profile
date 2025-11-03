@@ -292,3 +292,13 @@ body {
 body {
   position: relative;
 }
+
+/* Hide NavigationMenuViewport to prevent white background in navbar */
+[data-radix-navigation-menu-viewport],
+nav[class*="NavigationMenu"] div[class*="viewport"],
+[class*="NavigationMenu"] div[class*="viewport"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}

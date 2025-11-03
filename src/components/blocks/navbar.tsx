@@ -6,14 +6,13 @@
   import Link from "next/link";
   import { usePathname } from "next/navigation";
 
-  import { Menu, X } from "lucide-react";
+  import { Menu, X, ArrowRight } from "lucide-react";
 
   import {
     NavigationMenu,
     NavigationMenuItem,
     NavigationMenuList,
   } from "@/components/ui/navigation-menu";
-  import { ServicesDropdown } from "@/components/blocks/services-dropdown";
   import { cn } from "@/lib/utils";
 
   const ITEMS = [
@@ -31,13 +30,36 @@
     { label: "Contact", href: "/contact" },
   ];
 
+  const SERVICES = [
+    { name: "UI/UX Design", href: "/services/ui-ux-design" },
+    { name: "Web Development", href: "/services/web-development" },
+    { name: "Mobile Development", href: "/services/mobile-development" },
+    { name: "AI Development", href: "/services/ai-development" },
+    { name: "Product Strategy", href: "/services/product-strategy" },
+  ];
+
+  const FEATURED_SERVICES = [
+    {
+      title: "Web Development",
+      description: "Build modern, scalable web applications",
+      image: "/web-ui/1.webp",
+      link: "/services/web-development",
+    },
+    {
+      title: "Mobile App Design",
+      description: "Design beautiful mobile experiences",
+      image: "/apps-ui/1.jpg",
+      link: "/services/mobile-development",
+    },
+  ];
 
   export const Navbar = () => {
     const [isFullPageMenuOpen, setIsFullPageMenuOpen] = useState(false);
     const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
     const pathname = usePathname();
     const servicesDropdownRef = useRef<HTMLDivElement>(null);
-    const servicesLinkRef = useRef<HTMLAnchorElement>(null);
+    const servicesLinkRef = useRef<HTMLDivElement>(null);
+    const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
     // Prevent body scroll when full-page menu is open
     useEffect(() => {
@@ -61,6 +83,10 @@
           !servicesLinkRef.current.contains(event.target as Node)
         ) {
           setIsServicesDropdownOpen(false);
+          if (closeTimeoutRef.current) {
+            clearTimeout(closeTimeoutRef.current);
+            closeTimeoutRef.current = null;
+          }
         }
       };
 
@@ -73,11 +99,20 @@
       };
     }, [isServicesDropdownOpen]);
 
+    // Cleanup timeout on unmount
+    useEffect(() => {
+      return () => {
+        if (closeTimeoutRef.current) {
+          clearTimeout(closeTimeoutRef.current);
+        }
+      };
+    }, []);
+
     return (
       <>
       <section
         className={cn(
-          "bg-transparent absolute  left-0 right-0 z-50 w-full transition-all duration-300",
+          "bg-transparent absolute left-0 right-0 z-50 w-full transition-all duration-300",
           "top-0",
         )}
       >
@@ -100,18 +135,38 @@
           </Link>
 
           {/* Desktop Navigation */}
-          <NavigationMenu className="max-lg:hidden">
+          <NavigationMenu className="max-lg:hidden [&>div:last-child]:hidden [&_*[data-radix-navigation-menu-viewport]]:hidden [&_*[class*='viewport']]:hidden">
             <NavigationMenuList>
               {ITEMS.map((link) => (
                 <NavigationMenuItem key={link.label} className="relative">
                   {link.label === "Services" ? (
                     <div
+                      ref={servicesLinkRef}
                       className="relative"
-                      onMouseEnter={() => setIsServicesDropdownOpen(true)}
+                      onMouseEnter={() => {
+                        // Cancel any pending close timeout
+                        if (closeTimeoutRef.current) {
+                          clearTimeout(closeTimeoutRef.current);
+                          closeTimeoutRef.current = null;
+                        }
+                        setIsServicesDropdownOpen(true);
+                      }}
+                      onMouseLeave={(e) => {
+                        // Check if moving to dropdown
+                        const relatedTarget = e.relatedTarget as Node;
+                        const movingToDropdown = servicesDropdownRef.current?.contains(relatedTarget);
+                        
+                        // Only close if not moving to dropdown
+                        if (!movingToDropdown) {
+                          // Small delay to allow smooth transition
+                          closeTimeoutRef.current = setTimeout(() => {
+                            setIsServicesDropdownOpen(false);
+                            closeTimeoutRef.current = null;
+                          }, 200);
+                        }
+                      }}
                     >
                       <Link
-                        ref={servicesLinkRef}
-                        data-services-link
                         href={link.href}
                         className={cn(
                           "relative bg-transparent px-1.5 text-xs sm:text-sm font-medium text-gray-800 transition-colors hover:text-red-500",
@@ -128,6 +183,14 @@
                         "relative bg-transparent px-1.5 text-xs sm:text-sm font-medium text-gray-800 transition-colors hover:text-red-500",
                         pathname === link.href && "text-red-500",
                       )}
+                      onMouseEnter={() => {
+                        // Close dropdown when hovering other links
+                        if (closeTimeoutRef.current) {
+                          clearTimeout(closeTimeoutRef.current);
+                          closeTimeoutRef.current = null;
+                        }
+                        setIsServicesDropdownOpen(false);
+                      }}
                     >
                       {link.label}
                     </Link>
@@ -253,19 +316,90 @@
         </div>
       </section>
 
-      {/* Services Dropdown - Full width, positioned below navbar */}
+      {/* Services Dropdown */}
       {isServicesDropdownOpen && (
         <div
           ref={servicesDropdownRef}
-          data-services-dropdown
-          className="fixed left-0 right-0 z-40 w-full"
+          className="fixed left-0 right-0 z-40 max-w-7xl mx-auto bg-background rounded-2xl border-border"
           style={{ top: '73px' }}
-          onMouseEnter={() => setIsServicesDropdownOpen(true)}
-          onMouseLeave={() => setIsServicesDropdownOpen(false)}
+          onMouseEnter={() => {
+            // Cancel any pending close timeout
+            if (closeTimeoutRef.current) {
+              clearTimeout(closeTimeoutRef.current);
+              closeTimeoutRef.current = null;
+            }
+            setIsServicesDropdownOpen(true);
+          }}
+          onMouseLeave={(e) => {
+            // Check if moving back to services link
+            const relatedTarget = e.relatedTarget as Node;
+            const movingToLink = servicesLinkRef.current?.contains(relatedTarget);
+            
+            // Only close if not moving to services link
+            if (!movingToLink) {
+              closeTimeoutRef.current = setTimeout(() => {
+                setIsServicesDropdownOpen(false);
+                closeTimeoutRef.current = null;
+              }, 200);
+            }
+          }}
         >
-          {/* Invisible bridge to prevent gap between navbar and dropdown */}
-          <div className="h-2 bg-transparent" />
-          <ServicesDropdown />
+          <div className="container mx-auto px-6 sm:px-6 md:px-8 lg:px-6 xl:px-6 max-w-7xl">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 py-8 sm:py-10 md:py-12">
+              {/* Left Section - Services List */}
+              <div className="flex flex-col">
+                <h3 className="text-sm font-medium text-muted-foreground mb-6 sm:mb-8">
+                  Our services
+                </h3>
+                <ul className="space-y-4 sm:space-y-5">
+                  {SERVICES.map((service, index) => (
+                    <li key={index}>
+                      <Link
+                        href={service.href}
+                        className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight hover:text-red-500 transition-colors block"
+                        onClick={() => setIsServicesDropdownOpen(false)}
+                      >
+                        {service.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Right Section - Featured Service Cards */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-4 sm:gap-6">
+                {FEATURED_SERVICES.map((service, index) => (
+                  <Link
+                    key={index}
+                    href={service.link}
+                    className="group relative bg-muted rounded-2xl overflow-hidden block transition-transform hover:scale-[1.02]"
+                    onClick={() => setIsServicesDropdownOpen(false)}
+                  >
+                    {/* Image Container */}
+                    <div className="relative aspect-[4/3] overflow-hidden">
+                      <Image
+                        src={service.image}
+                        alt={service.title}
+                        fill
+                        className="object-cover transition-transform duration-300 group-hover:scale-110"
+                      />
+                    </div>
+
+                    {/* Content Overlay */}
+                    <div className="p-4 sm:p-5 md:p-6">
+                      <h4 className="text-xl sm:text-2xl font-bold tracking-tight mb-2">
+                        {service.title}
+                      </h4>
+                      <div className="flex items-center gap-2 text-muted-foreground group-hover:text-red-500 transition-colors">
+                        <span className="text-sm sm:text-base">{service.description}</span>
+                        <ArrowRight className="size-4 sm:size-5 flex-shrink-0" />
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       )}
       </>
