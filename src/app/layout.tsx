@@ -63,24 +63,23 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Personal Profile - Portfolio Website",
-    template: "%s | Personal Profile",
+    default: "Muhammed - UI/UX Designer & Developer",
+    template: "%s | Muhammed",
   },
   description:
-    "A modern personal portfolio website built with Next.js, Tailwind CSS, and shadcn/ui components.",
+    "UI/UX Designer and Developer specializing in creating beautiful, functional digital experiences. Services include UI/UX design, web development, mobile development, and product strategy.",
   keywords: [
-    "portfolio",
-    "personal website",
-    "Next.js",
-    "React",
-    "Tailwind CSS",
-    "shadcn/ui",
-    "developer portfolio",
-    "web developer",
+    "UI/UX Designer",
+    "Web Developer",
+    "Mobile Developer",
+    "Product Designer",
+    "Portfolio",
+    "Kozhikode",
+    "Kerala",
   ],
-  authors: [{ name: "Your Name" }],
-  creator: "Your Name",
-  publisher: "Your Name",
+  authors: [{ name: "Muhammed" }],
+  creator: "Muhammed",
+  publisher: "Muhammed",
   robots: {
     index: true,
     follow: true,
@@ -97,26 +96,26 @@ export const metadata: Metadata = {
     shortcut: [{ url: "/favicon/favicon.ico" }],
   },
   openGraph: {
-    title: "Personal Profile - Portfolio Website",
+    title: "Muhammed - UI/UX Designer & Developer",
     description:
-      "A modern personal portfolio website built with Next.js, Tailwind CSS, and shadcn/ui components.",
-    siteName: "Personal Profile",
+      "UI/UX Designer and Developer specializing in creating beautiful, functional digital experiences.",
+    siteName: "Muhammed Portfolio",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Personal Profile - Portfolio Website",
+        alt: "Muhammed - UI/UX Designer & Developer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Personal Profile - Portfolio Website",
+    title: "Muhammed - UI/UX Designer & Developer",
     description:
-      "A modern personal portfolio website built with Next.js, Tailwind CSS, and shadcn/ui components.",
+      "UI/UX Designer and Developer specializing in creating beautiful, functional digital experiences.",
     images: ["/og-image.jpg"],
-    creator: "@yourusername",
+    creator: "@ux_rafi",
   },
 };
 

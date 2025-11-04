@@ -10,11 +10,11 @@ import { cn } from "@/lib/utils";
 
 const websites = [
   {
-    name: "Monify - Finance SaaS",
+    name: "Finance Platform",
     image: "/web-ui/1.webp",
   },
   {
-    name: "Genius - SaaS Template",
+    name: "SaaS Dashboard",
     image: "/web-ui/2.webp",
   },
   {

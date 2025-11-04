@@ -16,9 +16,10 @@
   import { cn } from "@/lib/utils";
 
   const ITEMS = [
+    { label: "Home", href: "/" },
     { label: "About", href: "/about" },
     { label: "Services", href: "/services" },
-    { label: "Process", href: "/process" },
+    { label: "Projects", href: "/process" },
     { label: "Contact", href: "/contact" },
   ];
 
@@ -26,7 +27,7 @@
     { label: "Home", href: "/" },
     { label: "About", href: "/about" },
     { label: "Services", href: "/services" },
-    { label: "Process", href: "/process" },
+    { label: "Projects", href: "/process" },
     { label: "Contact", href: "/contact" },
   ];
 
@@ -34,7 +35,6 @@
     { name: "UI/UX Design", href: "/services/ui-ux-design" },
     { name: "Web Development", href: "/services/web-development" },
     { name: "Mobile Development", href: "/services/mobile-development" },
-    { name: "AI Development", href: "/services/ai-development" },
     { name: "Product Strategy", href: "/services/product-strategy" },
   ];
 
@@ -166,15 +166,14 @@
                         }
                       }}
                     >
-                      <Link
-                        href={link.href}
+                      <span
                         className={cn(
-                          "relative bg-transparent px-1.5 text-xs sm:text-sm font-medium text-gray-800 transition-colors hover:text-red-500",
-                          pathname === link.href && "text-red-500",
+                          "relative bg-transparent px-1.5 text-xs sm:text-sm font-medium text-gray-800 transition-colors hover:text-red-500 cursor-pointer",
+                          pathname?.startsWith("/services") && "text-red-500",
                         )}
                       >
                         {link.label}
-                      </Link>
+                      </span>
                     </div>
                   ) : (
                     <Link

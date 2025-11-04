@@ -14,9 +14,9 @@ export function Footer() {
   ];
 
   const social = [
-    { name: "Twitter", href: "https://twitter.com/yourusername" },
-    { name: "LinkedIn", href: "https://linkedin.com/in/yourusername" },
-    { name: "GitHub", href: "https://github.com/yourusername" },
+    { name: "Twitter", href: "https://x.com/ux_rafi" },
+    { name: "LinkedIn", href: "https://www.linkedin.com/in/uxrafi/" },
+    { name: "Instagram", href: "https://www.instagram.com/mrafi.me/" },
   ];
 
   const legal = [{ name: "Privacy Policy", href: "/privacy" }];

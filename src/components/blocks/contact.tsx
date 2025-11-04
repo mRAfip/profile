@@ -2,7 +2,7 @@ import React from "react";
 
 import Link from "next/link";
 
-import { Facebook, Linkedin, Twitter } from "lucide-react";
+import { Instagram, Linkedin, Twitter } from "lucide-react";
 
 import { ContactForm } from "@/components/blocks/contact-form";
 import { DashedLine } from "@/components/dashed-line";
@@ -38,17 +38,17 @@ const contactInfo = [
     title: "Follow me",
     content: (
       <div className="mt-3 flex gap-6 lg:gap-10">
-        <Link href="https://facebook.com/yourusername" className="text-muted-foreground hover:text-red-500 transition-colors">
-          <Facebook className="size-5" />
-        </Link>
         <Link
-          href="https://twitter.com/yourusername"
+          href="https://x.com/ux_rafi"
           className="text-muted-foreground hover:text-red-500 transition-colors"
         >
           <Twitter className="size-5" />
         </Link>
-        <Link href="https://linkedin.com/in/yourusername" className="text-muted-foreground hover:text-red-500 transition-colors">
+        <Link href="https://www.linkedin.com/in/uxrafi/" className="text-muted-foreground hover:text-red-500 transition-colors">
           <Linkedin className="size-5" />
+        </Link>
+        <Link href="https://www.instagram.com/mrafi.me/" className="text-muted-foreground hover:text-red-500 transition-colors">
+          <Instagram className="size-5" />
         </Link>
       </div>
     ),

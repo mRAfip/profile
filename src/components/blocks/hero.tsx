@@ -65,7 +65,7 @@ export const Hero = () => {
 
               <div className="mt-6 sm:mt-7 md:mt-8">
                 <ShimmerButton background="#ef4444" className="w-fit rounded-full">
-                  Talk to an expert
+                  Book a call
                 </ShimmerButton>
               </div>
             </div>
