@@ -16,70 +16,98 @@ type Company = {
 export const Logos = () => {
   const topRowCompanies = [
     {
-      name: "Mercury",
-      logo: "/logos/mercury.svg",
-      width: 143,
-      height: 26,
-      href: "https://mercury.com",
+      name: "OpenedX",
+      logo: "/logos/openedx.png",
+      width: 120,
+      height: 40,
+      href: "#",
     },
     {
-      name: "Watershed",
-      logo: "/logos/watershed.svg",
-      width: 154,
-      height: 31,
-      href: "https://watershed.com",
+      name: "Blended",
+      logo: "/logos/blended.svg",
+      width: 120,
+      height: 40,
+      href: "#",
     },
     {
-      name: "Retool",
-      logo: "/logos/retool.svg",
-      width: 113,
-      height: 22,
-      href: "https://retool.com",
+      name: "Cyra",
+      logo: "/logos/cyra.png",
+      width: 120,
+      height: 40,
+      href: "#",
     },
     {
-      name: "Descript",
-      logo: "/logos/descript.svg",
-      width: 112,
-      height: 27,
-      href: "https://descript.com",
+      name: "X and Y Learnings",
+      logo: "/logos/xandy.png",
+      width: 120,
+      height: 40,
+      href: "#",
+    },
+    {
+      name: "HireYouSoon",
+      logo: "/logos/hireyousoon.png",
+      width: 120,
+      height: 40,
+      href: "#",
     },
   ];
 
   const bottomRowCompanies = [
     {
-      name: "Perplexity",
-      logo: "/logos/perplexity.svg",
-      width: 141,
-      height: 32,
-      href: "https://perplexity.com",
+      name: "Amaala",
+      logo: "/logos/amaala.png",
+      width: 120,
+      height: 40,
+      href: "#",
     },
     {
-      name: "Monzo",
-      logo: "/logos/monzo.svg",
-      width: 104,
-      height: 18,
-      href: "https://monzo.com",
+      name: "Phonix",
+      logo: "/logos/phonix.png",
+      width: 120,
+      height: 40,
+      href: "#",
     },
     {
-      name: "Ramp",
-      logo: "/logos/ramp.svg",
-      width: 105,
-      height: 28,
-      href: "https://ramp.com",
+      name: "Rahmania",
+      logo: "/logos/rahmania.png",
+      width: 120,
+      height: 40,
+      href: "#",
     },
     {
-      name: "Raycast",
-      logo: "/logos/raycast.svg",
-      width: 128,
-      height: 33,
-      href: "https://raycast.com",
+      name: "Relish",
+      logo: "/logos/relish.png",
+      width: 120,
+      height: 40,
+      href: "#",
     },
     {
-      name: "Arc",
-      logo: "/logos/arc.svg",
-      width: 90,
-      height: 28,
-      href: "https://arc.com",
+      name: "Retrofit",
+      logo: "/logos/retrofit.png",
+      width: 120,
+      height: 40,
+      href: "#",
+    },
+    {
+      name: "SNGC",
+      logo: "/logos/sngc.png",
+      width: 120,
+      height: 40,
+      href: "#",
+    },
+    {
+      name: "Traveleo",
+      logo: "/logos/traveleo.png",
+      width: 120,
+      height: 40,
+      href: "#",
+    },
+    {
+      name: "Ftric",
+      logo: "/logos/ftric.png",
+      width: 120,
+      height: 40,
+      href: "#",
     },
   ];
 
@@ -97,13 +125,13 @@ export const Logos = () => {
         </div>
 
         <div className="flex w-full flex-col items-center gap-8">
-          {/* Top row - 4 logos */}
-          <LogoRow companies={topRowCompanies} gridClassName="grid-cols-4" />
+          {/* Top row - 5 logos */}
+          <LogoRow companies={topRowCompanies} gridClassName="grid-cols-5" />
 
-          {/* Bottom row - 5 logos */}
+          {/* Bottom row - 8 logos */}
           <LogoRow
             companies={bottomRowCompanies}
-            gridClassName="grid-cols-5"
+            gridClassName="grid-cols-8"
             direction="right"
           />
         </div>
@@ -136,7 +164,7 @@ const LogoRow = ({ companies, gridClassName, direction }: LogoRowProps) => {
                 alt={`${company.name} logo`}
                 width={company.width}
                 height={company.height}
-                className="dark:opacity/100 object-contain opacity-50 transition-opacity hover:opacity-70 dark:invert"
+                className="object-contain grayscale transition-all duration-300 hover:grayscale-0 dark:invert"
               />
             </Link>
           ))}
@@ -151,7 +179,7 @@ const LogoRow = ({ companies, gridClassName, direction }: LogoRowProps) => {
               href={company.href}
               target="_blank"
               key={index}
-              className="mx-6 sm:mx-8 inline-block transition-opacity hover:opacity-70"
+              className="mx-6 sm:mx-8 inline-block"
               aria-label={company.name}
             >
               <Image
@@ -159,7 +187,7 @@ const LogoRow = ({ companies, gridClassName, direction }: LogoRowProps) => {
                 alt={`${company.name} logo`}
                 width={company.width}
                 height={company.height}
-                className="object-contain opacity-50 hover:opacity-70 grayscale hover:grayscale-0 dark:invert dark:opacity-100"
+                className="object-contain grayscale transition-all duration-300 hover:grayscale-0 dark:invert"
               />
             </Link>
           ))}

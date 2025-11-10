@@ -15,10 +15,10 @@ import {
 import { ShimmerButton } from "@/components/ui/shimmer-button";
 
 const heroImages = [
-  { src: "/4.webp", alt: "Hero Image 1" },
-  { src: "/3.webp", alt: "Hero Image 2" },
-  { src: "/2.webp", alt: "Hero Image 3" },
-  { src: "/1.webp", alt: "Hero Image 4" },
+  { src: "/banner1.png", alt: "Hero Image 1" },
+  { src: "/banner2.png", alt: "Hero Image 2" },
+  { src: "/banner3.png", alt: "Hero Image 3" },
+  { src: "/banner4.png", alt: "Hero Image 4" },
 ];
 
 export const Hero = () => {
