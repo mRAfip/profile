@@ -303,6 +303,21 @@ body {
   position: relative;
 }
 
+/* Horizontal scroll animation */
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% / 3));
+  }
+}
+
+.animate-scroll {
+  animation: scroll 45s linear infinite;
+  will-change: transform;
+}
+
 /* Hide NavigationMenuViewport to prevent white background in navbar */
 [data-radix-navigation-menu-viewport],
 nav[class*="NavigationMenu"] div[class*="viewport"],

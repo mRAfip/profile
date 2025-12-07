@@ -24,7 +24,7 @@
           className,
         )}
         style={{
-          background: `linear-gradient(180deg,  #F7F4F2 0%, #F7F4F2 100%)`
+          background: `#F9F9F9`
         }}
       >
         {children}

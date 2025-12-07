@@ -16,7 +16,7 @@ export default function Home() {
         <Hero />
         <Logos />
         <Features />
-        <ResourceAllocation />
+        {/* <ResourceAllocation /> */}
       </Background>
       <AppShowcase />
       <SingleTestimonial variant={1} />

@@ -11,17 +11,17 @@
     {
       title: "UI/UX Design",
       description: "User interface and user experience design for websites and mobile apps",
-      image: "/features/triage-card.svg",
+      image: "/features/ux.jpg",
     },
     {
       title: "Web Development",
       description: "Custom website and mobile app development services",
-      image: "/features/cycle-card.svg",
+      image: "/features/web.jpg",
     },
     {
-      title: "AI Development",
-      description: "Artificial intelligence integration and AI-powered features",
-      image: "/features/overview-card.svg",
+      title: "Mobile App Design & Development",
+      description: "Designing intuitive interfaces and building performant mobile apps",
+      image: "/features/app.jpg",
     },
   ];
 
@@ -54,12 +54,12 @@
               {items.map((item, i) => (
                 <div key={i} className="flex flex-1 max-md:flex-col">
                   <div className="flex-1 p-4 pe-0! md:p-6">
-                    <div className="relative aspect-[1.28/1] overflow-hidden">
+                    <div className="relative aspect-[1.28/1] rounded-tl-xl overflow-hidden">
                       <Image
                         src={item.image}
                         alt={`${item.title} interface`}
                         fill
-                        className="object-cover object-left-top ps-4 pt-2"
+                        className="object-cover rounded-tl-3xl object-left-top"
                       />
                       <div className="from-background absolute inset-0 z-10 bg-linear-to-t via-transparent to-transparent" />
                     </div>
