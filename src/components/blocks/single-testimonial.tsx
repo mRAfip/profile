@@ -19,20 +19,20 @@ type TestimonialContent = {
 const CONTENT_MAP: Record<TestimonialVariant, TestimonialContent> = {
   1: {
     quote:
-      "I don’t think a day goes by without incorporating what I learned. I love being able to prompt AI to write a simple introduction or suggest improvements to awkward sentences. It also helps with organizing information and brainstorming ideas.",
-    name: "Caroline G.",
-    title: "Google Prompting Essentials • Graduate",
-    avatarSrc: "/testimonials/amy-chase.webp",
+      "Muhammed Rafi served as a UI/UX mentor and trainer for our students. His clear teaching style and real-world insights greatly enhanced their understanding and skills in design.",
+    name: "Navas Muhammed",
+    title: "CEO",
+    avatarSrc: "/navas.png",
     ctaLabel: "Book a call",
     ctaHref: "/contact",
   },
   2: {
     quote:
-      "Working together transformed our product direction. Clear strategy, faster delivery, and a UI our customers love.",
-    name: "Michael R.",
-    title: "VP Product • SaaS Platform",
-    avatarSrc: "/testimonials/kevin-yam.webp",
-    ctaLabel: "Start your project",
+      "Muhammed Rafi designed our landing page for X and Y Learning. His design approach was exceptional, creating a modern and user-friendly interface that perfectly captured our brand identity and improved our conversion rates.",
+    name: "Ajmal",
+    title: "X and Y Learning",
+    avatarSrc: "/ajmal.png",
+    ctaLabel: "Book a call",
     ctaHref: "/contact",
   },
   3: {
@@ -52,7 +52,7 @@ export function SingleTestimonial({ variant = 1 }: { variant?: TestimonialVarian
   return (
     <section className="mx-auto max-w-5xl py-12 sm:py-16 md:py-20 lg:py-24">
       <div className="container px-4 sm:px-6 md:px-8 lg:px-6 xl:px-4">
-        {/* Quote block (restored) */}
+        {/* Quote block */}
         <div>
           <Image
             src="/qtz.png"
@@ -67,7 +67,7 @@ export function SingleTestimonial({ variant = 1 }: { variant?: TestimonialVarian
           </p>
         </div>
 
-        {/* Row: Avatar + Name/Title + CTA (kept) */}
+        {/* Row: Avatar + Name/Title + CTA */}
         <div className="mt-8 flex items-center justify-between gap-6">
           <div className="flex items-center gap-4 sm:gap-5 md:gap-6">
             <div className="relative h-16 w-16 overflow-hidden rounded-full sm:h-18 sm:w-18 md:h-20 md:w-20">

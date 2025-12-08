@@ -7,12 +7,12 @@ import { X } from "lucide-react";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
 
 const workImages = [
-  { src: "/work/1.avif", alt: "Work 1" },
-  { src: "/work/2.avif", alt: "Work 2" },
-  { src: "/work/3.avif", alt: "Work 3" },
-  { src: "/work/4.avif", alt: "Work 4" },
-  { src: "/work/5.avif", alt: "Work 5" },
-  { src: "/work/6.avif", alt: "Work 6" },
+  { src: "/web-ui/1.webp", alt: "Work 1" },
+  { src: "/web-ui/2.webp", alt: "Work 2" },
+  { src: "/web-ui/3.webp", alt: "Work 3" },
+  { src: "/web-ui/4.webp", alt: "Work 4" },
+  { src: "/web-ui/5.webp", alt: "Work 5" },
+  { src: "/web-ui/6.webp", alt: "Work 6" },
 ];
 
 export const Hero = () => {

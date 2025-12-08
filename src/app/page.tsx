@@ -21,7 +21,7 @@ export default function Home() {
       <AppShowcase />
       <SingleTestimonial variant={1} />
       <WebShowcase />
-      <SingleTestimonial variant={1} />
+      <SingleTestimonial variant={2} />
 
 
 
